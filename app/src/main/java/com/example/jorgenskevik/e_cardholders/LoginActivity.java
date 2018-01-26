@@ -26,6 +26,8 @@ import com.digits.sdk.android.Digits;
 import com.example.jorgenskevik.e_cardholders.Variables.KVTVariables;
 import com.example.jorgenskevik.e_cardholders.models.LoginModel;
 import com.example.jorgenskevik.e_cardholders.models.SessionManager;
+import com.example.jorgenskevik.e_cardholders.models.Token;
+import com.example.jorgenskevik.e_cardholders.models.User;
 import com.example.jorgenskevik.e_cardholders.remote.UserAPI;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -450,6 +452,7 @@ public class LoginActivity extends AppCompatActivity  implements
                                     @Override
                                     public void onResponse(Call<LoginModel> call, Response<LoginModel> response) {
                                         if (response.isSuccessful()) {
+                                            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
                                             LoginModel LoginList = response.body();
 
                                             sessionManager = new SessionManager(getApplicationContext());
@@ -480,6 +483,9 @@ public class LoginActivity extends AppCompatActivity  implements
                                             String expirationString = dateTimeFormatter2.print(timeToExpiration);
 
                                             //skriv noe her!
+                                            String bearToken = "Bearer " + tokenString;
+                                            System.out.println(refreshedToken + " : " + bearToken + " : " + KVTVariables.getAcceptVersion() + " : " + KVTVariables.getAppkey());
+                                            sendRegistrationToServer(refreshedToken, bearToken, KVTVariables.getAcceptVersion(), KVTVariables.getAppkey());
                                             sessionManager.createLoginSession(usernameString,emailString, tokenString, studentNumber, id, role, pictureToken, expirationString, birthDateString, picture);
 
                                             if (role.equals("admin")) {
@@ -555,6 +561,35 @@ public class LoginActivity extends AppCompatActivity  implements
         for (View v : views) {
             v.setEnabled(false);
         }
+    }
+    private void sendRegistrationToServer(String token, String authToken, String acceptVersion, String clientKey) {
+        Gson gson = new GsonBuilder()
+                .setLenient()
+                .create();
+
+        //local eller base
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(KVTVariables.getBaseUrl())
+                .addConverterFactory(GsonConverterFactory.create(gson))
+                .build();
+
+        UserAPI userapi = retrofit.create(UserAPI.class);
+
+        Token sendToken = new Token(token);
+        userapi.postToken(sendToken, authToken, acceptVersion, clientKey).enqueue(new Callback<Token>() {
+            @Override
+            public void onResponse(Call<Token> call, Response<Token> response) {
+                if(response.isSuccessful()){
+                }else{
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Token> call, Throwable t) {
+
+            }
+        });
+
     }
 
 

@@ -8,7 +8,7 @@ import android.content.SharedPreferences;
 public class KVTVariables {
 
     private static String Local_URL = "http://10.0.2.2:9000/";
-    private static String AcceptVersion = "V2";
+    private static String AcceptVersion = "V3";
     private static String TWITTER_KEY = "OwT8vAGt92TMSDRK3O9naZznW";
     private static String TWITTER_SECRET = "PfC1rhbLQ8WSnmJCgqKwyfPZJyjyAoLHzx61sClci42tiiA38R";
     private static String Appkey = "8bcc18cc2edd648a13ebdb5b8f7ca2d6";

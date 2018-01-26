@@ -61,6 +61,9 @@
     <string name="phone_title_text">Phone Number</string>
     <string name="sign_out">Sign out</string>
 
+    <string name="default_notification_channel_id" translatable="false">fcm_default_channel</string>
+    <string name="default_notification_channel_name" translatable="true">News</string>
+
 
     <string name="verification">verification successful</string>
     <string name="landskode">Country Code:</string>

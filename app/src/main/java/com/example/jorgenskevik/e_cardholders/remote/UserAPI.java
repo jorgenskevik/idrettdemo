@@ -10,6 +10,7 @@ import android.util.Log;
 import com.example.jorgenskevik.e_cardholders.BuildConfig;
 import com.example.jorgenskevik.e_cardholders.models.LoginModel;
 import com.example.jorgenskevik.e_cardholders.models.PictureModel;
+import com.example.jorgenskevik.e_cardholders.models.Token;
 import com.example.jorgenskevik.e_cardholders.models.User;
 
 import java.util.List;
@@ -25,6 +26,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.Body;
+import retrofit2.http.Field;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -32,6 +34,7 @@ import retrofit2.http.HEAD;
 import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
 
@@ -59,6 +62,11 @@ public interface UserAPI {
     Call<User> postPicture(@Path("id") String id, @Header("Authorization") String auth,
                            @Header("accept-version") String version, @Header("client_key") String clientKey,
                            @Part MultipartBody.Part photo, @Part("pictureToken") RequestBody pictureToken);
+
+
+    @PUT("Users/me/fcm-token")
+    Call<Token> postToken(@Body Token deviceId , @Header("Authorization") String authorization,
+                          @Header("accept-version") String version, @Header("client_key") String clientKey);
 
     /**
      * Gets user.

@@ -58,7 +58,7 @@
     <string name="verify_phone_auth">Verifiser</string>
     <string name="resend_phone_auth">Send på ny</string>
     <string name="hint_phone_number">Mobilnummer</string>
-    <string name="hint_verification_code">Verifiserings Kode</string>
+    <string name="hint_verification_code">VerifiseringsKode</string>
     <string name="status_code_sent">Code Sent</string>
     <string name="status_verification_failed">Verification failed</string>
     <string name="status_verification_succeeded">Verification succeeded</string>
@@ -66,6 +66,7 @@
     <string name="instant_validation">(instant validation)</string>
     <string name="phone_title_text">Phone Number</string>
     <string name="sign_out">Sign out</string>
+    <string name="default_notification_channel_name" translatable="true">News</string>
 
     <string name="spring">Vårsemester</string>
     <string name="fall">Høstsemester</string>

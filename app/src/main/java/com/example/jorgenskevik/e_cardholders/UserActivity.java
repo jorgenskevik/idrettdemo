@@ -2,6 +2,7 @@ package com.example.jorgenskevik.e_cardholders;
 
 import android.Manifest;
 import android.annotation.TargetApi;
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.ContextWrapper;
 import android.content.Intent;
@@ -42,6 +43,8 @@ import com.example.jorgenskevik.e_cardholders.Variables.KVTVariables;
 import com.example.jorgenskevik.e_cardholders.models.SessionManager;
 import com.example.jorgenskevik.e_cardholders.models.User;
 import com.example.jorgenskevik.e_cardholders.remote.UserAPI;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.RemoteMessage;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.squareup.picasso.Picasso;
@@ -287,7 +290,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
     ByteArrayOutputStream stream;
     //Cursor cursor;
 
-
+    private static final String TAG = "MyFirebaseMsgService";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -298,11 +301,18 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
             StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
             StrictMode.setThreadPolicy(policy);
         }
+        if (getIntent().getExtras() != null) {
+            for (String key : getIntent().getExtras().keySet()) {
+                Object value = getIntent().getExtras().get(key);
+                Log.d(TAG, "Key: " + key + " Value: " + value);
+            }
+        }
         sessionManager = new SessionManager(getApplicationContext());
         view2 = (ImageView) findViewById(R.id.window1);
         simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.GERMANY);
 
         //View barcode
+        String token123 = FirebaseInstanceId.getInstance().getToken();
 
         codeButton = (ImageButton) findViewById(R.id.imageButton3);
         firstAndSirName = (TextView) findViewById(R.id.navnstring);
