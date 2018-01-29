@@ -494,19 +494,9 @@ public class LoginActivity extends AppCompatActivity  implements
                                                 Toast toast = Toast.makeText(context, R.string.youareadmin, duration);
                                                 toast.show();
 
-
-                                            } else if (emailString.trim().equals("") || id.trim().equals("") || usernameString.trim().equals("") || role.trim().equals("") || pictureToken.trim().equals("")) {
-                                                Context context = getApplicationContext();
-                                                int duration = Toast.LENGTH_SHORT;
-                                                Toast toast = Toast.makeText(context, R.string.contactIT, duration);
-                                                toast.show();
-                                                Intent intent = new Intent(LoginActivity.this, ContactUsActivity.class);
-                                                startActivity(intent);
-
                                             } else {
                                                 Intent intent = new Intent(LoginActivity.this, TermsActivity.class);
                                                 startActivity(intent);
-
                                             }
                                         } else {
                                             Context context = getApplicationContext();
@@ -515,7 +505,6 @@ public class LoginActivity extends AppCompatActivity  implements
                                             Toast toast = Toast.makeText(context, text, duration);
                                             toast.show();
                                         }
-
                                     }
 
                                     @Override

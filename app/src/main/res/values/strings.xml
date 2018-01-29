@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">KVT - KortFri</string>
+    <string name="app_name">Idrett - KortFri</string>
     <string name="headerTwo">We digitize your school certificates</string>
     <string name="Madewith">Made with</string>
     <string name="forKVT">for</string>
@@ -14,7 +14,7 @@
     <string name="title_activity_main4">Main4Activity</string>
     <string name="title_activity_test">test</string>
     <string name="barcode">Barcode</string>
-    <string name="studentcard">Student card</string>
+    <string name="studentcard">Membership Card</string>
     <string name="closeSettings">Cancel</string>
     <string name="Loggout">Log out</string>
     <string name="moreInfo">Contact IT support to get yur code</string>
@@ -33,9 +33,9 @@
     <string name="youareadmin">You are admin, use the web app</string>
     <string name="contactIT">Contact IT support</string>
     <string name="signInDigiFail">Login failed</string>
-    <string name="studentbevis">STUDENT CARD</string>
-    <string name="companynamelong">Kristen Videregående skole Trøndelag</string>
-    <string name="companyname">KVT</string>
+    <string name="studentbevis">Membership Card</string>
+    <string name="companynamelong">KortFri - Norge</string>
+    <string name="companyname">KortFri</string>
     <string name="GyldigTil">Valid for </string>
     <string name="expired">EXPIRED</string>
     <string name="studentnumber">Studentnr:</string>
@@ -69,13 +69,16 @@
     <string name="landskode">Country Code:</string>
 
 
+    <string name="medlem">Member Benefits</string>
+
     <string name="Not">Invalid</string>
     <string name="yourPic">Your picture::</string>
     <string name="writepictureToken">Write picture code:</string>
     <string name="setPic">Set picture</string>
     <string name="back">Back</string>
-    <string name="spring">Spring semester</string>
-    <string name="fall">Fall semester</string>
+    <string name="spring">Spring</string>
+    <string name="fall">Fall</string>
+    <string name="openBarCode">Bar Code</string>
     <string name="policy">Policy</string>
     <string name="acceptTerms">Click the "I accept" box to use the app</string>
     <string name="checkBox">I accept</string>

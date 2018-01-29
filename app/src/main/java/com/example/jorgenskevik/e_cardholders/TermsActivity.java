@@ -78,39 +78,13 @@ public class TermsActivity extends Activity {
      */
 
 
-    @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN)
     public void openCard(View view) {
-        String buildVersion = Build.VERSION.RELEASE;
-        String firstLetter = String.valueOf(buildVersion.charAt(0));
-        int number = Integer.parseInt(firstLetter);
-        if(number < maxBuildVersion){
-            //Digits.logout();
-            if (checkBox.equals("check")){
-                Intent intent = new Intent(TermsActivity.this, UserActivity.class);
-                startActivity(intent);
-                return;
-            }else{
-                Toast.makeText(this, R.string.acceptTerms, Toast.LENGTH_SHORT).show();
-            }
-
-        }
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
+        if (checkBox.equals("check")) {
             Intent intent = new Intent(TermsActivity.this, UserActivity.class);
-            if(checkBox.equals("check")){
-                startActivity(intent);
-            }else{
-                Toast.makeText(this, R.string.acceptTerms, Toast.LENGTH_SHORT).show();
-            }
-        }else{
-            if(number < maxBuildVersion){
-
-            }else{
-                String[] permissionRequest = {Manifest.permission.READ_EXTERNAL_STORAGE};
-                ActivityCompat.requestPermissions(this, permissionRequest, CAM_REQUEST_CODE);
-                Toast.makeText(this, R.string.GiveAccess, Toast.LENGTH_SHORT).show();
-            }
-
-
+            startActivity(intent);
+            return;
+        } else {
+            Toast.makeText(this, R.string.acceptTerms, Toast.LENGTH_SHORT).show();
         }
     }
 }

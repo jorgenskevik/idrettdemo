@@ -48,15 +48,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
-              }
-            },
-            {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },
@@ -107,15 +107,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
-              }
-            },
-            {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },
@@ -166,15 +166,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
-              }
-            },
-            {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },
@@ -225,15 +225,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
-              }
-            },
-            {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },
@@ -284,15 +284,15 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
-              }
-            },
-            {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },
@@ -343,15 +343,184 @@
           "status": 2,
           "other_platform_oauth_client": [
             {
-              "client_id": "973471203209-jt9k2vs6q08kqg7efmrivsggkk8armfe.apps.googleusercontent.com",
+              "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.kortfrinorge.kortfri-natur"
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
               }
-            },
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973471203209:android:83817036389c68e3",
+        "android_client_info": {
+          "package_name": "kortfri.norge.lukasfsreal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973471203209-tvo17l9h83rd7d5ukm4dk9rrmds2o49g.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kortfri.norge.lukasfsreal",
+            "certificate_hash": "5f9a07bca4389dea21aa745f4a5e7835ed22d10f"
+          }
+        },
+        {
+          "client_id": "973471203209-bvhlcgo6r0r0jlhqodt49vo10lh6r74e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kortfri.norge.lukasfsreal",
+            "certificate_hash": "68a126056c122b42f22235d0d07e80cc49f76682"
+          }
+        },
+        {
+          "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm3pTdDXDw6c89RS_MTB3BUKXGAU0Mogs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
             {
               "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973471203209:android:a1523e5462bc1762",
+        "android_client_info": {
+          "package_name": "kortfri.norge.lukasvgs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973471203209-qqt7surqim42a2pcgs9obccuv2pa5puv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kortfri.norge.lukasvgs",
+            "certificate_hash": "a349955a5f85705063e130e224f8fff0602077fa"
+          }
+        },
+        {
+          "client_id": "973471203209-t7vdhr4bcd4o70h9biu9nd9pr84t5e9h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kortfri.norge.lukasvgs",
+            "certificate_hash": "68a126056c122b42f22235d0d07e80cc49f76682"
+          }
+        },
+        {
+          "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm3pTdDXDw6c89RS_MTB3BUKXGAU0Mogs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973471203209:android:80a86f46fdbe359f",
+        "android_client_info": {
+          "package_name": "kortfri.norge.idrettdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "973471203209-fu29dimh1qq2d9adcngb9j648m7f4sfu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "kortfri.norge.idrettdemo",
+            "certificate_hash": "68a126056c122b42f22235d0d07e80cc49f76682"
+          }
+        },
+        {
+          "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm3pTdDXDw6c89RS_MTB3BUKXGAU0Mogs"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "973471203209-pbrbefptf25l6s22e5ebmj0evnfn0sei.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "973471203209-pqkdvumo3bk9ofafq41ctu9tg11ecgav.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.kortfrinorge.kortfri-idrett"
+              }
             }
           ]
         },

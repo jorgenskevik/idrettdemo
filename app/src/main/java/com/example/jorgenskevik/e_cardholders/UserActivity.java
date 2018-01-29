@@ -99,7 +99,11 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
      * The Expiration button.
      */
 //Uri imageUri, data;
-    Button expirationButton;
+    Button expirationButton,
+    fordelButton
+    ;
+
+
     /**
      * The View 2.
      */
@@ -110,7 +114,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
     /**
      * The Code button.
      */
-    ImageButton codeButton;
     /**
      * The First and sir name.
      */
@@ -221,7 +224,10 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
     number, /**
      * The Column index.
      */
-    columnIndex;
+    columnIndex,
+
+    greyColor
+    ;
     /**
      * The Target format.
      */
@@ -314,44 +320,49 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
         //View barcode
         String token123 = FirebaseInstanceId.getInstance().getToken();
 
-        codeButton = (ImageButton) findViewById(R.id.imageButton3);
+        expirationButton = (Button) findViewById(R.id.buttonValid);
+        fordelButton = (Button) findViewById(R.id.buttonFordel);
+        ImageButton medlemButton = (ImageButton) findViewById(R.id.buttonOpen);
+
+        fordelButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://arne872.wixsite.com/idrett/kopi-av-home");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
+        medlemButton.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse("https://arne872.wixsite.com/idrett");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
+
         firstAndSirName = (TextView) findViewById(R.id.navnstring);
-        BirthDay = (TextView) findViewById(R.id.stringfdato);
-        studentId = (TextView) findViewById(R.id.studentid);
         userDetails = sessionManager.getUserDetails();
 
         firstAndSirNameString = userDetails.get(SessionManager.KEY_NAME);
         birthdayString = userDetails.get(SessionManager.KEY_BIRTHDATE);
         targetFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.GERMANY);
 
-        studentIDString = userDetails.get(SessionManager.KEY_STUDENTNUMBER);
-        path = userDetails.get(SessionManager.KEY_PATH);
-        picture = userDetails.get(SessionManager.KEY_PICTURE);
-        studentNumber = userDetails.get(SessionManager.KEY_STUDENTNUMBER);
         JodaTimeAndroid.init(this);
-
-
-        if (path == null) {
-            view2.setImageResource(R.drawable.facebookgirl);
-
-            if (!picture.equals("")) {
-                ContextWrapper cw = new ContextWrapper(this);
-                File directory = cw.getDir(studentNumber, Context.MODE_PRIVATE);
-                File myImageFile = new File(directory, "my_image.jpeg");
-                Picasso.with(this).load(myImageFile).resize(300,300).centerCrop().into(view2);
-            }
-        } else {
-            File f = new File(path);
-            Picasso.with(getApplicationContext()).load(f).resize(300,300).centerCrop().into(view2);
-        }
+        greyColor = Color.rgb(78,78,78);
+        selectedWhite = Color.rgb(255, 255, 255);
+        fordelButton.setBackgroundColor(greyColor);
+        fordelButton.setText(R.string.medlem);
+        fordelButton.setTextColor(selectedWhite);
+        fordelButton.setTextSize(18);
+        fordelButton.setTransformationMethod(null);
 
         firstAndSirName.setText(firstAndSirNameString);
-        extraStudentID = getResources().getString(R.string.studentnumber) + " " + studentIDString;
-        studentId.setText(extraStudentID);
-        BirthDay.setText(birthdayString);
         sessionManager = new SessionManager(getApplicationContext());
         expirationDateString = userDetails.get(SessionManager.KEY_EXPERATIONDATE);
-        expirationButton = (Button) findViewById(R.id.button11);
 
         startDate = null;
         try {
@@ -369,7 +380,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
         } else {
             //gyldig
             //selectedColor = Color.rgb(132, 205, 182);
-            selectedColor = Color.rgb(239, 146, 72);
+            selectedColor = Color.rgb(148, 203, 183);
             selectedWhite = Color.rgb(255, 255, 255);
             int selectedBlack = Color.rgb(0, 0, 0);
 
@@ -401,13 +412,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                 e.printStackTrace();
             }
         }
-        codeButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(UserActivity.this, BarCodeActivity.class));
-            }
-        });
 
 
     }
@@ -428,7 +432,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
     public void showActionSheet() {
         ActionSheet.createBuilder(this, getSupportFragmentManager())
                 .setCancelButtonTitle(R.string.closeSettings)
-                .setOtherButtonTitles(getResources().getString(R.string.Loggout), getResources().getString(R.string.Terms), getResources().getString(R.string.setPicture),
+                .setOtherButtonTitles(getResources().getString(R.string.Loggout), getResources().getString(R.string.Terms),
                         getResources().getString(R.string.updateProfile), getResources().getString(R.string.policy))
                 .setCancelableOnTouchOutside(true).setListener(this).show();
     }
@@ -452,75 +456,9 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
             startActivity(intent);
 
         }
-        //sett profilbilde
-        if (index == 2) {
-            userDetails = sessionManager.getUserDetails();
-            fourDigits = userDetails.get(SessionManager.KEY_PICTURETOKEN);
 
-            if (fourDigits.equals("BRUKT")) {
-                context = getApplicationContext();
-                duration = Toast.LENGTH_SHORT;
-                toast = Toast.makeText(context, getResources().getString(R.string.DenyPicture), duration);
-                toast.show();
-
-            } else {
-                selectedColor = Color.rgb(239, 146, 72);
-                selectedWhite = Color.rgb(255, 255, 255);
-                int selectedBlack = Color.rgb(50, 43, 43);
-                int black = Color.rgb(0, 0, 0);
-
-                LinearLayout linearLayout = new LinearLayout(this);
-                linearLayout.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-                linearLayout.setOrientation(LinearLayout.VERTICAL);
-                setContentView(linearLayout);
-                double widthParam = 0.92;
-                double heightParam = 0.5;
-                DisplayMetrics dm = new DisplayMetrics();
-                getWindowManager().getDefaultDisplay().getMetrics(dm);
-                int width = dm.widthPixels;
-                int height = dm.heightPixels;
-                ImageView imageView = new ImageView(this);
-                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams((int) (width * widthParam), (int) (height * heightParam));
-                imageView.setLayoutParams(layoutParams);
-                layoutParams.gravity = Gravity.CENTER;
-                Button myButtonOk = new Button(this);
-                Button myButtonCansel = new Button(this);
-                myButtonOk.setText("OK");
-                myButtonOk.setTextColor(selectedWhite);
-                myButtonCansel.setTextColor(selectedWhite);
-                myButtonOk.setBackgroundColor(selectedColor);
-                myButtonCansel.setText(R.string.back);
-                myButtonCansel.setBackgroundColor(selectedBlack);
-                TextView myTextView = new TextView(this);
-                myTextView.setTextSize(16);
-                myTextView.setText(R.string.pictureMessage);
-                myTextView.setTextColor(black);
-                myTextView.setPadding(10, 10, 10, 10);
-                linearLayout.addView(myTextView);
-                linearLayout.addView(myButtonOk);
-                linearLayout.addView(myButtonCansel);
-
-                myButtonOk.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        photoPickerIntent = new Intent(Intent.ACTION_PICK);
-                        pictureFile = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES);
-                        picturePath = pictureFile.getPath();
-                        Uri data = Uri.parse(picturePath);
-                        photoPickerIntent.setDataAndType(data, "image/*");
-                        startActivityForResult(photoPickerIntent, IMAGE_GALLERY_REQUEST);
-                    }
-                });
-
-                myButtonCansel.setOnClickListener(new View.OnClickListener() {
-                    public void onClick(View view) {
-                        Intent intent = new Intent(UserActivity.this, UserActivity.class);
-                        startActivity(intent);
-                    }
-                });
-            }
-        }
         //Oppdater brukeren
-        if (index == 3) {
+        if (index == 2) {
             Gson gson = new GsonBuilder()
                     .setLenient()
                     .create();
@@ -548,8 +486,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                         studentNumber = user.getStudentNumber();
                         id = user.getId();
                         role = user.getRole();
-                        pictureToken = user.getPictureToken();
-                        picture = user.getPicture();
 
                         userDateOfBirthDate = user.getDateOfBirth();
                         userExpirationDate = user.getExpirationDate();
@@ -563,8 +499,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                         dateTimeBirthday = dateTimeFormatter.print(dateTime);
                         dateTimeExpiration = dateTimeFormatter2.print(dateTime2);
 
-                        sessionManager.deletePhoto();
-                        sessionManager.createUpdatedLoginSession(username, email, studentNumber, id, role, pictureToken, dateTimeBirthday, dateTimeExpiration, picture);
+                        sessionManager.createUpdatedLoginSession(username, email, studentNumber, id, role, dateTimeBirthday, dateTimeExpiration);
 
 
                         startDate = null;
@@ -582,14 +517,15 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                             expirationButton.setBackgroundColor(selectedColor);
                         } else {
                             //gyldig
-                            selectedColor = Color.rgb(239, 146, 72);
+                            //selectedColor = Color.rgb(239, 146, 72);
+                            selectedColor = Color.rgb(148, 203, 183);
                             selectedWhite = Color.rgb(255, 255, 255);
                             targetFormat = new SimpleDateFormat("dd-MMM-yyyy");
                             try {
                                 if(Calendar.getInstance().get(Calendar.MONTH) + 1 < 8){
                                     date = simpleDateFormat.parse(dateTimeExpiration);
                                     formattedDate = targetFormat.format(date);
-                                    expirationDate =getResources().getString(R.string.spring) + " " + Calendar.getInstance().get(Calendar.YEAR);
+                                    expirationDate = getResources().getString(R.string.spring) + " " + Calendar.getInstance().get(Calendar.YEAR);
                                     expirationButton.setText(expirationDate);
                                     expirationButton.setTextColor(selectedWhite);
                                     expirationButton.setBackgroundColor(selectedColor);
@@ -607,57 +543,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                                 e.printStackTrace();
                             }
                         }
-
-                        if(picture.equals("")){
-                            view2.setImageResource(R.drawable.facebookgirl);
-                        }else{
-
-                            ContextWrapper cw = new ContextWrapper(getApplicationContext());
-                            File directory = cw.getDir(studentNumber, Context.MODE_PRIVATE);
-                            File myImageFile = new File(directory, "my_image.jpeg");
-                            myImageFile.getAbsoluteFile().delete();
-                            myImageFile.delete();
-                            deleteFile("my_image.jpeg");
-                            Picasso.with(getApplicationContext()).invalidate(myImageFile);
-                            deleteTempFolder(studentNumber);
-
-                            try {
-                                myImageFile.getCanonicalFile().delete();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-
-
-                            try {
-                                context.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.fromFile(new File(directory, "my_image.jpeg"))));
-                            }catch (NullPointerException e){
-                            }
-
-
-                            try{
-                                userDetails = sessionManager.getUserDetails();
-                                userDetails = sessionManager.getUserDetails();
-                                String kortfri = userDetails.get(SessionManager.KEY_TURN);
-                                if(kortfri.equals("kortfri")){
-                                    Picasso.with(getApplicationContext()).load(user.getPicture()).into(picassoImageTarget(getApplicationContext(), user.getStudentNumber(), "my_image.jpeg"));
-                                    Picasso.with(getApplicationContext()).load(picture).resize(300,300).centerCrop().into(view2);
-                                }else{
-                                    float rotateImage = Float.parseFloat(userDetails.get(SessionManager.KEY_TURN));
-                                    Picasso.with(getApplicationContext()).load(user.getPicture()).rotate(rotateImage).into(picassoImageTarget(getApplicationContext(), user.getStudentNumber(), "my_image.jpeg"));
-                                    Picasso.with(getApplicationContext()).load(picture).rotate(rotateImage).resize(300,300).centerCrop().into(view2);
-                                }
-
-                            }catch (NullPointerException e){
-                                Picasso.with(getApplicationContext()).load(user.getPicture()).into(picassoImageTarget(getApplicationContext(), user.getStudentNumber(), "my_image.jpeg"));
-                                Picasso.with(getApplicationContext()).load(picture).resize(300,300).centerCrop().into(view2);
-                            }
-                        }
-
                         firstAndSirName.setText(username);
-                        BirthDay.setText(dateTimeBirthday);
-                        String extra = getResources().getString(R.string.studentnumber) + " " + studentNumber;
-                        studentId.setText(extra);
-
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.userUpdated), Toast.LENGTH_SHORT).show();
 
                     } else {
@@ -671,7 +557,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                 }
             });
         }
-        if (index == 4) {
+        if (index == 3) {
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://privacypolicy.kortfri.no"));
             startActivity(browserIntent);
         }
@@ -696,9 +582,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
             mediaPath = cursor.getString(columnIndex);
             cursor.close();
 
-            intent = new Intent(this, PictureActivity.class);
-            intent.putExtra("picture", mediaPath);
-            startActivity(intent);
+
         }
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
@@ -713,9 +597,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                     mediaPath = cursor.getString(columnIndex);
                     cursor.close();
 
-                    intent = new Intent(this, PictureActivity.class);
-                    intent.putExtra("picture", mediaPath);
-                    startActivity(intent);
                 }
             }
 
@@ -750,65 +631,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
      */
     public void shake(View v) {
         Animation shake = AnimationUtils.loadAnimation(this, R.anim.anime);
-        findViewById(R.id.window1).startAnimation(shake);
-    }
-
-    public String hentString(Context context, String imageDir,String imageName){
-        ContextWrapper cw = new ContextWrapper(context);
-        File directory = cw.getDir(imageDir, Context.MODE_PRIVATE);
-        File myImageFile = new File(directory, imageName);
-        return myImageFile.getAbsolutePath();
-    }
-
-    private Target picassoImageTarget(Context context, final String imageDir, final String imageName) {
-        ContextWrapper cw = new ContextWrapper(context);
-        final File directory = cw.getDir(imageDir, Context.MODE_PRIVATE);
-        return new Target() {
-
-            @Override
-            public void onBitmapLoaded(final Bitmap bitmap, Picasso.LoadedFrom from) {
-                new Thread(new Runnable() {
-                    @Override
-                    public void run() {
-                        final File myImageFile = new File(directory, imageName);
-                        FileOutputStream fos = null;
-                        try {
-                            fos = new FileOutputStream(myImageFile);
-                            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                fos.close();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                }).start();
-            }
-
-            @Override
-            public void onBitmapFailed(Drawable errorDrawable) {
-            }
-            @Override
-            public void onPrepareLoad(Drawable placeHolderDrawable) {
-                if (placeHolderDrawable != null) {
-                }
-            }
-        };
-    }
-
-
-
-    private void deleteTempFolder(String dir) {
-        File myDir = new File(Environment.getExternalStorageDirectory() + "/"+dir);
-        if (myDir.isDirectory()) {
-            String[] children = myDir.list();
-            for (int i = 0; i < children.length; i++) {
-                new File(myDir, children[i]).delete();
-            }
-        }
+        findViewById(R.id.shake).startAnimation(shake);
     }
 
 }

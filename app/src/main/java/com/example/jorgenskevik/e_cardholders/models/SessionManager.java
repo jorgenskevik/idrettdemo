@@ -197,12 +197,10 @@ public class SessionManager {
      * @param studentNumber  the student number
      * @param id             the id
      * @param role           the role
-     * @param pictureToken   the picture token
      * @param dateOfBirth    the date of birth
      * @param experationDate the experation date
-     * @param picture        the picture
      */
-    public void createUpdatedLoginSession(String name, String email, String studentNumber, String id, String role, String pictureToken, String dateOfBirth ,String experationDate, String picture){
+    public void createUpdatedLoginSession(String name, String email, String studentNumber, String id, String role, String dateOfBirth ,String experationDate){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
@@ -218,9 +216,6 @@ public class SessionManager {
         // Storing role in pref
         editor.putString(KEY_ROLE, role);
 
-        // Storing role in pref
-        editor.putString(KEY_PICTURETOKEN, pictureToken);
-
         // Storing studentnumber in pref
         editor.putString(KEY_STUDENTNUMBER, studentNumber);
 
@@ -229,8 +224,6 @@ public class SessionManager {
 
         // Storing role in pref
         editor.putString(KEY_EXPERATIONDATE, experationDate);
-
-        editor.putString(KEY_PICTURE, picture);
 
         // commit changes
         editor.commit();
