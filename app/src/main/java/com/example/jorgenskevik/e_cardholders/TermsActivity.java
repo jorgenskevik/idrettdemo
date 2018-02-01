@@ -82,7 +82,6 @@ public class TermsActivity extends Activity {
         if (checkBox.equals("check")) {
             Intent intent = new Intent(TermsActivity.this, UserActivity.class);
             startActivity(intent);
-            return;
         } else {
             Toast.makeText(this, R.string.acceptTerms, Toast.LENGTH_SHORT).show();
         }

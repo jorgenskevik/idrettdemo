@@ -9,7 +9,9 @@
     <string name="Callus">Ring oss:</string>
     <string name="Terms">Vilkår</string>
     <string name="Picture">Bilde</string>
-    <string name="termsdescription1">Appen vil vise informasjon om navn, studiested og gyldigheten til det digitale studentbeviset. Appen vil også vise bilde av deg - som du selv velger. Appen fungerer som studentbevis, og kan benyttes som legitimasjon hos selskaper som har avtale med ditt studiested om honnør-billetter. Ved førstegangs bruk må appen være tilkoblet internett for å kunne last ned informasjonen som finnes om deg. Denne blir lagret lokalt og du trenger derfor ikke være på nett for å bruke appen senere. KortFri tar ikke ansvar for bøter, misbruk og lignende.</string>
+    <string name="termsdescription1">Applikasjonen viser informasjon om navn, organisasjon og om medlemskapet er gyldig. Applikasjonen fungerer som et medlemsbevis, og kan benyttes ihht. organisasjonens medlemsfordeler.
+                                    Ved førstegangs bruk må appen være tilkoblet internett for å laste ned informasjonen om deg. Dette blir lagret lokalt og du trenger ikke netttilgang for videre bruk. Ved fornyelse/videreføring av medlemskap må applikasjonen oppdateres slik at ny utløpsdato settes.
+                                    Kortfri tar ikke ansvar for misbruk av applikasjonen.</string>
     <string name="termsdescription2">Er du over 15 år og godtar våre vilkår?</string>
     <string name="termsdescription3">Kortet vil være gyldig et semester av gangen før det må oppdateres, vårsemestret strekker seg fra 01.01 til 31.07 og høstsemestret fra 01.08 til 31.12.</string>
     <string name="barcode">Barkode</string>
@@ -50,7 +52,7 @@
 
     <string name="verification">Innlogging vellykket</string>
     <string name="landskode">Landskode:</string>
-
+    <string name="internett">Du må være koblet til internett for å logge på</string>
     <string name="label_phone_auth">Phone Number Authentication</string>
     <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
     <string name="signed_in">Write phone number</string>
@@ -60,7 +62,7 @@
     <string name="hint_phone_number">Mobilnummer</string>
     <string name="hint_verification_code">VerifiseringsKode</string>
     <string name="status_code_sent">Code Sent</string>
-    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_failed">Sjekk internett tilkoblingen</string>
     <string name="status_verification_succeeded">Verification succeeded</string>
     <string name="status_sign_in_failed">Sign-in failed</string>
     <string name="instant_validation">(instant validation)</string>

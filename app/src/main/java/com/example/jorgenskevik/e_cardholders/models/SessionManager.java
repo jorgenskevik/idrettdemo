@@ -4,20 +4,11 @@ package com.example.jorgenskevik.e_cardholders.models;
  * Created by jorgenskevik on 27.03.2017.
  */
 
-import java.util.Date;
 import java.util.HashMap;
-import java.util.StringTokenizer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-
-import com.digits.sdk.android.Digits;
-import com.example.jorgenskevik.e_cardholders.BarCodeActivity;
-import com.example.jorgenskevik.e_cardholders.TermsActivity;
-import com.example.jorgenskevik.e_cardholders.UserActivity;
-import com.example.jorgenskevik.e_cardholders.LoginActivity;
 
 /**
  * The type Session manager.
@@ -136,6 +127,26 @@ public class SessionManager {
         editor = pref.edit();
     }
 
+
+
+    public void createLoginNew(String name, String email, String token, String id, String role, String experationDate){
+        editor.putBoolean(IS_LOGIN, true);
+
+        editor.putString(KEY_NAME, name);
+
+        editor.putString(KEY_EMAIL, email);
+
+        editor.putString(KEY_TOKEN, token);
+
+        editor.putString(KEY_ID, id);
+
+        editor.putString(KEY_ROLE, role);
+
+        editor.putString(KEY_EXPERATIONDATE, experationDate);
+
+        editor.commit();
+    }
+
     /**
      * Create login session.
      *
@@ -227,6 +238,29 @@ public class SessionManager {
 
         // commit changes
         editor.commit();
+    }
+
+    public void createUpdateSession(String name, String email, String id , String role, String experationDate){
+        editor.putBoolean(IS_LOGIN, true);
+
+        // Storing name in pref
+        editor.putString(KEY_NAME, name);
+
+        // Storing email in pref
+        editor.putString(KEY_EMAIL, email);
+
+        // Storing id in pref
+        editor.putString(KEY_ID, id);
+
+        // Storing role in pref
+        editor.putString(KEY_ROLE, role);
+
+        // Storing role in pref
+        editor.putString(KEY_EXPERATIONDATE, experationDate);
+
+        // commit changes
+        editor.commit();
+
     }
 
     /**

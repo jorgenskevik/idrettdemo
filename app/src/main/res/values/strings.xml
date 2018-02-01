@@ -8,7 +8,7 @@
     <string name="Callus">Call KVT:</string>
     <string name="Terms">Terms</string>
     <string name="Picture">Picture</string>
-    <string name="termsdescription1">This app will display your name, place of study and the validity of your digital student card. The app will display a photo of you if you choose to select one. The app will function as a student card and can be used as identification for services your place of study has an agreement with. First time usage requires you to be connected to WiFi or a cellular connection to download the information required to display the student card. This information will be stored locally on the app. KortFri does not take any responsibility for tickets, abuse or any usage that violates Norwegian or international laws. The photos uploaded on this app will be deleted from our database once you as a user are deleted from our systems. Users with admin-rights to the KortFri system have the possibility to delete users. Usually this will be the IT-responsible at? your place of study.</string>
+    <string name="termsdescription1">The application displays information about your name, organization and whether membership is valid. The application serves as a member certificate and can be used to access organizational benefits. For initial use, the app must be connected to the internet to download information about you. This is stored locally and you do not need internet access for further use. The application must be updated to set new expiration date when this expires. KortFri does not take responsibility for abuse of the application</string>
     <string name="termsdescription2">Are you 15 or older, and do you accept our terms of use?</string>
     <string name="termsdescription3">The card will be valid for one semester at a time before it has to get updated, the spring semester reaches from 01.01 to 31.07 and the fall semester from 01.08 to 31.12.</string>
     <string name="title_activity_main4">Main4Activity</string>
@@ -44,6 +44,8 @@
     <string name="login123">Login</string>
     <string name="infomasjon">Contact Information</string>
 
+    <string name="internett">You need to connect to the internet to login</string>
+
 
     <string name="label_phone_auth">Phone Number Authentication</string>
     <string name="desc_phone_auth">Use a phone number to authenticate with Firebase.</string>
@@ -54,7 +56,7 @@
     <string name="hint_phone_number">Phone Number</string>
     <string name="hint_verification_code">Verification Code</string>
     <string name="status_code_sent">Code Sent</string>
-    <string name="status_verification_failed">Verification failed</string>
+    <string name="status_verification_failed">Check your internet connection</string>
     <string name="status_verification_succeeded">Verification succeeded</string>
     <string name="status_sign_in_failed">Sign-in failed</string>
     <string name="instant_validation">(instant validation)</string>

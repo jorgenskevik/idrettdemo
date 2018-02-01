@@ -348,7 +348,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
         userDetails = sessionManager.getUserDetails();
 
         firstAndSirNameString = userDetails.get(SessionManager.KEY_NAME);
-        birthdayString = userDetails.get(SessionManager.KEY_BIRTHDATE);
         targetFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.GERMANY);
 
         JodaTimeAndroid.init(this);
@@ -412,8 +411,6 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                 e.printStackTrace();
             }
         }
-
-
     }
 
     /**
@@ -499,7 +496,8 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                         dateTimeBirthday = dateTimeFormatter.print(dateTime);
                         dateTimeExpiration = dateTimeFormatter2.print(dateTime2);
 
-                        sessionManager.createUpdatedLoginSession(username, email, studentNumber, id, role, dateTimeBirthday, dateTimeExpiration);
+                        sessionManager.createUpdateSession(username, email, id, role, dateTimeExpiration);
+                        //sessionManager.createUpdatedLoginSession(username, email, studentNumber, id, role, dateTimeBirthday, dateTimeExpiration);
 
 
                         startDate = null;
@@ -544,7 +542,7 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                             }
                         }
                         firstAndSirName.setText(username);
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.userUpdated), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.internett), Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.userNotUpdated), Toast.LENGTH_SHORT).show();
@@ -564,64 +562,8 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
     }
 
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        buildVersion = Build.VERSION.RELEASE;
-        firstLetter = String.valueOf(buildVersion.charAt(0));
-        number = Integer.parseInt(firstLetter);
-        if (number < 6) {
-            System.gc();
-            if (data == null) {
-                return;
-            }
-            android.net.Uri imageUri = data.getData();
-            String[] filePath = {MediaStore.Images.Media.DATA};
-            android.database.Cursor cursor = getContentResolver().query(imageUri, filePath, null, null, null);
-            assert cursor != null;
-            cursor.moveToFirst();
-            columnIndex = cursor.getColumnIndex(filePath[0]);
-            mediaPath = cursor.getString(columnIndex);
-            cursor.close();
-
-
-        }
-
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            if (resultCode == RESULT_OK) {
-                if (requestCode == IMAGE_GALLERY_REQUEST) {
-                    android.net.Uri imageUri = data.getData();
-                    String[] filePath = {MediaStore.Images.Media.DATA};
-                    android.database.Cursor cursor = getContentResolver().query(imageUri, filePath, null, null, null);
-                    assert cursor != null;
-                    cursor.moveToFirst();
-                    columnIndex = cursor.getColumnIndex(filePath[0]);
-                    mediaPath = cursor.getString(columnIndex);
-                    cursor.close();
-
-                }
-            }
-
-        } else {
-            String[] permissionRequest = {Manifest.permission.READ_EXTERNAL_STORAGE};
-            ActivityCompat.requestPermissions(this, permissionRequest, CAM_REQUEST_CODE);
-        }
-    }
-
-    @Override
     public void onBackPressed() {
         moveTaskToBack(true);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (requestCode == CAM_REQUEST_CODE) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-
-                Toast.makeText(this, "hallo", Toast.LENGTH_LONG).show();
-
-            } else {
-            }
-        }
     }
 
     /**
