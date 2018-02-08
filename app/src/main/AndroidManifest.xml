@@ -22,7 +22,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/kortfrinorgeas"
+        android:icon="@drawable/complogo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:largeHeap="true"
