@@ -351,11 +351,11 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
         targetFormat = new SimpleDateFormat("dd-MMM-yyyy", Locale.GERMANY);
 
         JodaTimeAndroid.init(this);
-        greyColor = Color.rgb(78,78,78);
+        greyColor = Color.rgb(97, 97, 97);
         selectedWhite = Color.rgb(255, 255, 255);
-        fordelButton.setBackgroundColor(greyColor);
+        //fordelButton.setBackgroundColor(greyColor);
         fordelButton.setText(R.string.medlem);
-        fordelButton.setTextColor(selectedWhite);
+        fordelButton.setTextColor(greyColor);
         fordelButton.setTextSize(18);
         fordelButton.setTransformationMethod(null);
 
@@ -373,8 +373,9 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
             //Ugyldig
             selectedColor = Color.rgb(254, 56, 36);
             expirationButton.setText(R.string.expired);
+            expirationButton.setTextColor(selectedColor);
             expirationButton.setTextSize(30);
-            expirationButton.setBackgroundColor(selectedColor);
+            //expirationButton.setBackgroundColor(selectedColor);
 
         } else {
             //gyldig
@@ -390,22 +391,22 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                     date = simpleDateFormat.parse(thisExpDate);
                     formattedDate = targetFormat.format(date);
                     expirationButton.setTransformationMethod(null);
-                    expirationDate = getResources().getString(R.string.spring) + " " + Calendar.getInstance().get(Calendar.YEAR);
+                    expirationDate = getResources().getString(R.string.valid) + " " + Calendar.getInstance().get(Calendar.YEAR);
                     expirationButton.setText(expirationDate);
-                    expirationButton.setTextColor(selectedWhite);
-                    expirationButton.setBackgroundColor(selectedColor);
-                    expirationButton.setTextSize(22);
+                    expirationButton.setTextColor(selectedColor);
+                    //expirationButton.setBackgroundColor(selectedColor);
+                    expirationButton.setTextSize(18);
 
                 }else{
                     thisExpDate = userDetails.get(SessionManager.KEY_EXPERATIONDATE);
                     date = simpleDateFormat.parse(thisExpDate);
                     formattedDate = targetFormat.format(date);
                     expirationButton.setTransformationMethod(null);
-                    expirationDate = getResources().getString(R.string.fall) + " " + Calendar.getInstance().get(Calendar.YEAR);
+                    expirationDate = getResources().getString(R.string.valid) + " " + Calendar.getInstance().get(Calendar.YEAR);
                     expirationButton.setText(expirationDate);
-                    expirationButton.setTextColor(selectedWhite);
-                    expirationButton.setBackgroundColor(selectedColor);
-                    expirationButton.setTextSize(22);
+                    expirationButton.setTextColor(selectedColor);
+                    //expirationButton.setBackgroundColor(selectedColor);
+                    expirationButton.setTextSize(18);
                 }
             } catch (ParseException e) {
                 e.printStackTrace();
@@ -460,15 +461,20 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                     .setLenient()
                     .create();
 
+
+            userDetails = sessionManager.getUserDetails();
+
             Retrofit retrofit = new Retrofit.Builder()
                     .baseUrl(KVTVariables.getBaseUrl())
                     .addConverterFactory(GsonConverterFactory.create(gson))
                     .build();
-            userDetails = sessionManager.getUserDetails();
 
-            authenticateString = "Bearer " + userDetails.get(SessionManager.KEY_TOKEN);
+            String refreshedToken = FirebaseInstanceId.getInstance().getToken();
+
 
             UserAPI userapi = retrofit.create(UserAPI.class);
+            authenticateString = "Bearer " + userDetails.get(SessionManager.KEY_TOKEN);
+
             userapi.getUser(KVTVariables.getAcceptVersion(), authenticateString).enqueue(new Callback<User>() {
                 @Override
                 public void onResponse(Call<User> call, Response<User> response) {
@@ -511,8 +517,9 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                             //Ugyldig
                             selectedColor = Color.rgb(254, 56, 36);
                             expirationButton.setText(R.string.expired);
+                            expirationButton.setTextColor(selectedColor);
                             expirationButton.setTextSize(30);
-                            expirationButton.setBackgroundColor(selectedColor);
+                            //expirationButton.setBackgroundColor(selectedColor);
                         } else {
                             //gyldig
                             //selectedColor = Color.rgb(239, 146, 72);
@@ -523,26 +530,26 @@ public class UserActivity extends AppCompatActivity implements ActionSheet.Actio
                                 if(Calendar.getInstance().get(Calendar.MONTH) + 1 < 8){
                                     date = simpleDateFormat.parse(dateTimeExpiration);
                                     formattedDate = targetFormat.format(date);
-                                    expirationDate = getResources().getString(R.string.spring) + " " + Calendar.getInstance().get(Calendar.YEAR);
+                                    expirationDate = getResources().getString(R.string.valid) + " " + Calendar.getInstance().get(Calendar.YEAR);
                                     expirationButton.setText(expirationDate);
-                                    expirationButton.setTextColor(selectedWhite);
-                                    expirationButton.setBackgroundColor(selectedColor);
-                                    expirationButton.setTextSize(22);
+                                    expirationButton.setTextColor(selectedColor);
+                                    //expirationButton.setBackgroundColor(selectedColor);
+                                    expirationButton.setTextSize(18);
                                 }else{
                                     date = simpleDateFormat.parse(dateTimeExpiration);
                                     formattedDate = targetFormat.format(date);
-                                    expirationDate =  getResources().getString(R.string.fall) + " " + Calendar.getInstance().get(Calendar.YEAR);
+                                    expirationDate =  getResources().getString(R.string.valid) + " " + Calendar.getInstance().get(Calendar.YEAR);
                                     expirationButton.setText(expirationDate);
-                                    expirationButton.setTextColor(selectedWhite);
-                                    expirationButton.setBackgroundColor(selectedColor);
-                                    expirationButton.setTextSize(22);
+                                    expirationButton.setTextColor(selectedColor);
+                                    //expirationButton.setBackgroundColor(selectedColor);
+                                    expirationButton.setTextSize(18);
                                 }
                             } catch (ParseException e) {
                                 e.printStackTrace();
                             }
                         }
                         firstAndSirName.setText(username);
-                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.internett), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.userUpdated), Toast.LENGTH_SHORT).show();
 
                     } else {
                         Toast.makeText(getApplicationContext(), getResources().getString(R.string.userNotUpdated), Toast.LENGTH_SHORT).show();

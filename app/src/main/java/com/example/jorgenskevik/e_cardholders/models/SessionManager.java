@@ -112,6 +112,9 @@ public class SessionManager {
 
     public static final String KEY_CHECK = "check";
 
+    public static final String KEY_SUPER = "supertoken";
+
+
     public static final String KEY_TURN = "turn";
 
 
@@ -301,6 +304,8 @@ public class SessionManager {
     }
 
 
+
+
     /**
      * Update picture.
      *
@@ -341,6 +346,20 @@ public class SessionManager {
         editor.apply();
 
     }
+
+    public void supertoken(String supertoken){
+        // Storing login value as TRUE
+        editor.putBoolean(IS_LOGIN, true);
+
+        // Storing role in pref
+        editor.putString(KEY_SUPER, supertoken );
+
+        // commit changes
+        editor.apply();
+
+    }
+
+
 
 
     /**
@@ -397,6 +416,8 @@ public class SessionManager {
         user.put(KEY_CHECK, pref.getString(KEY_CHECK, null));
 
         user.put(KEY_TURN, pref.getString(KEY_TURN, null));
+
+        user.put(KEY_SUPER, pref.getString(KEY_SUPER, null));
 
 
         // return user

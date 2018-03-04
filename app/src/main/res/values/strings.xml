@@ -44,6 +44,9 @@
     <string name="login123">Login</string>
     <string name="infomasjon">Contact Information</string>
 
+    <string name="valid">Valid:</string>
+
+
     <string name="internett">You need to connect to the internet to login</string>
 
 

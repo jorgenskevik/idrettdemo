@@ -59,7 +59,6 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
      */
     private void sendRegistrationToServer(String token) {
         User user;
-        System.out.println("blir denne metoden kjørt...............?");
         HashMap<String,String> authHeader = new HashMap<String, String>();
         HashMap<String, String> userDetails;
 
@@ -67,7 +66,7 @@ public class MyFirebaseInstanceIDService extends FirebaseInstanceIdService {
         SessionManager sessionManager;
         sessionManager = new SessionManager(getApplicationContext());
         userDetails = sessionManager.getUserDetails();
-        beartoken = "Bearer " + userDetails.get(SessionManager.KEY_TOKEN);
+        beartoken = "Bearer " + userDetails.get(SessionManager.KEY_SUPER);
 
         authHeader.put("client_key", KVTVariables.getAppkey());
         authHeader.put("Accept-Version", KVTVariables.getAcceptVersion());

@@ -47,6 +47,9 @@
     <string name="setPic">Sett bilde</string>
     <string name="back">Tilbake</string>
 
+    <string name="valid">Gyldig:</string>
+
+
     <string name="login123">Logg inn</string>
     <string name="infomasjon">Kontaktinformasjon</string>
 

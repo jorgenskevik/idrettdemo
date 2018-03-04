@@ -429,6 +429,9 @@ public class LoginActivity extends AppCompatActivity  implements
                         public void onComplete(@NonNull Task<GetTokenResult> task) {
                             if (task.isSuccessful()) {
                                 String idToken = task.getResult().getToken();
+                                sessionManager = new SessionManager(getApplicationContext());
+
+                                sessionManager.supertoken(idToken);
 
                                 HashMap<String,String> authHeader = new HashMap<String, String>();
 
